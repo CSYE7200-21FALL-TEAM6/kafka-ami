@@ -17,8 +17,8 @@
             "subnet_id": "{{user `subnet_id`}}",
             "source_ami": "{{user `source_ami`}}",
             "ssh_username": "{{user `ssh_username`}}",
-            "ami_name": "csye7200_kafka_{{timestamp}}",
-            "ami_description": "Ubuntu kafka AMI for CSYE7200",
+            "ami_name": "csye7200_zookeeper_{{timestamp}}",
+            "ami_description": "Ubuntu zookeeper AMI for CSYE7200",
             "launch_block_device_mappings": [
                 {
                     "device_name": "/dev/sda1",
@@ -39,12 +39,11 @@
                 "sudo apt-get update",
                 "sudo apt-get update",
                 "sudo apt-get install openjdk-8-jdk -y",
-                "wget https://csye7200-team5-config.s3.amazonaws.com/installer/kafka_2.13-2.5.0.tgz",
-                "tar zxvf kafka_2.13-2.5.0.tgz",
-                "rm kafka_2.13-2.5.0.tgz",
-                "wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb",
-                "sudo dpkg -i -E ./amazon-cloudwatch-agent.deb",
-                "rm amazon-cloudwatch-agent.deb"
+                "wget https://csye7200-team5-config.s3.amazonaws.com/installer/apache-zookeeper-3.5.9-bin.tar.gz",
+                "tar zxvf apache-zookeeper-3.5.9-bin.tar.gz",
+                "wget https://csye7200-team5-config.s3.amazonaws.com/config/zookeeper/zoo.cfg",
+                "mv ~/zoo.cfg apache-zookeeper-3.5.9-bin/conf/zoo.cfg",
+                "rm apache-zookeeper-3.5.9-bin.tar.gz"
             ]
         }
     ]
